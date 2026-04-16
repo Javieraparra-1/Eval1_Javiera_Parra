@@ -69,3 +69,54 @@ const estiloNoche = `
 const styleTag = document.createElement('style');
 styleTag.textContent = estiloNoche;
 document.head.appendChild(styleTag);
+async function cargarServicios() {
+  try {
+    const response = await fetch('https://ciisa.coningenio.cl/v1/services/', {
+      headers: {
+        'Authorization': 'Bearer ciisa'
+      }
+    });
+    const data = await response.json();
+    
+    const contenedor = document.getElementById('contenedorServicios');
+    contenedor.innerHTML = '';
+    
+    data.forEach(function(servicio) {
+      const col = document.createElement('div');
+      col.className = 'col-12 col-md-6';
+      col.innerHTML = `
+        <div class="card h-100 p-3">
+          <div class="card-body">
+            <h5 class="card-title">${servicio.name || servicio.nombre}</h5>
+            <p class="card-text">${servicio.description || servicio.descripcion}</p>
+          </div>
+        </div>
+      `;
+      contenedor.appendChild(col);
+    });
+  } catch(error) {
+    console.log('API no disponible, usando contenido local');
+  }
+}
+async function cargarNosotros() {
+  try {
+    const response = await fetch('https://ciisa.coningenio.cl/v1/about-us/', {
+      headers: {
+        'Authorization': 'Bearer ciisa'
+      }
+    });
+    const data = await response.json();
+
+    if(data.mision || data.mission) {
+      document.querySelector('#nosotros .card:nth-child(1) p').textContent = data.mision || data.mission;
+    }
+    if(data.vision) {
+      document.querySelector('#nosotros .card:nth-child(2) p').textContent = data.vision;
+    }
+  } catch(error) {
+    console.log('API no disponible, usando contenido local');
+  }
+}
+
+cargarServicios();
+cargarNosotros();
