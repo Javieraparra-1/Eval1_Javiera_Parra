@@ -1,0 +1,83 @@
+:root {
+  --color-fondo: #F5F0E8;
+  --color-navbar: #3D2B1F;
+  --color-texto: #2C1810;
+  --color-card: #6B4C3B;
+  --color-boton: #3D2B1F;
+  --color-blanco: #FFFFFF;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: 'Georgia', serif;
+}
+
+.navbar {
+  background-color: var(--color-navbar) !important;
+}
+
+.navbar-brand {
+  color: var(--color-blanco) !important;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.nav-link {
+  color: var(--color-blanco) !important;
+}
+Perfecto! Ahora sigamos con el código de las cards de servicios para que se parezcan al prototipo.
+
+Agrega esto en styles.css
+¿Para qué sirve? Le da el estilo oscuro/café a las cards igual que en el prototipo.
+css.card {
+  background-color: var(--color-card);
+  color: var(--color-blanco);
+  border: none;
+  border-radius: 8px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+#servicios {
+  background-color: var(--color-fondo) !important;
+}
+
+#servicios h2 {
+  color: var(--color-texto);
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+section {
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+Son dos preguntas, vamos una por una:
+
+1. Formulario color café
+Agrega esto en tu styles.css:
+¿Para qué sirve? Le da el color café oscuro al formulario igual que en el prototipo de Canva.
+css#contacto .card {
+  background-color: var(--color-card) !important;
+  color: var(--color-blanco) !important;
+}
+
+#contacto .form-control,
+#contacto .form-select {
+  background-color: #5a3e2b;
+  color: var(--color-blanco);
+  border: 1px solid #8B6347;
+}
+
+#contacto .form-control::placeholder {
+  color: #d4b89a;
+}
+
+#contacto .form-label {
+  color: var(--color-blanco);
+}
